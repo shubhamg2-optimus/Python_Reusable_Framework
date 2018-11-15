@@ -1,6 +1,7 @@
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.expected_conditions import visibility_of
 
 _failed_expectations = []
@@ -32,6 +33,11 @@ class BasePage():
         self.saveto.logger.info("%s is clicked" % element_visible_text)
         self.wait(self.driver.find_element_by_xpath("//*[text()='"+element_visible_text+"']"))
         self.driver.find_element_by_xpath("//*[text()='" + element_visible_text + "']").click()
+
+    def element_click_by_link_text(self, element_link_text):
+        self.saveto.logger.info("%s is clicked" % element_link_text)
+        self.wait(self.driver.find_element_by_partial_link_text(element_link_text))
+        self.driver.find_element_by_partial_link_text(element_link_text).click()
 
     def element_click_by_class(self, element_class):
         self.saveto.logger.info("Sign in button is clicked")
@@ -110,6 +116,12 @@ class BasePage():
     def get_value_of_css_property(self, element_xpath, property):
         self.saveto.logger.info("Getting value of css property")
         return self.driver.find_element_by_xpath(element_xpath).value_of_css_property(property)
+
+    def perform_hover_by_xpath(self, element_xpath):
+        self.saveto.logger.info("Hovering over the element")
+        element_to_hover_over = self.driver.find_element_by_xpath(element_xpath)
+        hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
+        hover.perform()
 
     def refresh_browser(self):
         self.saveto.logger.info("Refreshing browser")
