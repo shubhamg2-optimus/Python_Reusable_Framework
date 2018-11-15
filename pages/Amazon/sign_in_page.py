@@ -15,7 +15,7 @@ class SignInPage():
     # Constants
     duplicate_username_error_message = 'An account already exists with this username.'
     duplicate_email_message = "An account already exists with this email."
-    empty_email_validation_msg = "Enter your email or mobile phone number"
+    EMPTY_EMAIL_VALIDATION_MSG = "Enter your email or mobile phone number"
 
     # Functions
     def login_with_email_password(self, email, password):
