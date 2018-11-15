@@ -8,14 +8,15 @@ class HomePage():
         self.driver = webdriver
 
     # Locators
-    Sign_in_dropdown_class = "nav-a nav-a-2-active"
+    Sign_in_dropdown_xpath = "//div[@id='nav-tools']/a"
+
 
     # Constants
 
 
     # Functions
     def navigate_to_sign_in_page(self):
-        self.bp.element_click_by_class(self.Sign_in_dropdown_class)
-        time.sleep(20)
+        self.bp.element_click_by_xpath(self.Sign_in_dropdown_xpath)
+        time.sleep(5)
 
 

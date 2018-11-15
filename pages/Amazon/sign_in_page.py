@@ -6,8 +6,10 @@ class SignInPage():
         self.driver = webdriver
 
     # Locators
-    page_title_xpath = "//p-header"
-    delete_icon_xpath = "//a[@class='icon trash']"
+    email_text_field_xpath = "//input[@name='email']"
+    password_text_field_xpath = "//input[@name='password']"
+    continue_button_class = "a-button-input"
+
 
     # Constants
     duplicate_username_error_message = 'An account already exists with this username.'
@@ -15,4 +17,7 @@ class SignInPage():
 
     # Functions
     def login_with_email_password(self, email, password):
-        print("success")
+        self.bp.enter_value_in_text_field_by_xpath(self.email_text_field_xpath, email)
+        self.bp.element_click_by_class(self.continue_button_class)
+        self.bp.enter_value_in_text_field_by_xpath(self.password_text_field_xpath, password)
+        self.bp.element_click_by_class(self.continue_button_class)

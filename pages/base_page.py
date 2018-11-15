@@ -30,12 +30,12 @@ class BasePage():
 
     def element_click_by_visible_text(self, element_visible_text):
         self.saveto.logger.info("%s is clicked" % element_visible_text)
-        self.wait(self.driver.find_element_by_xpath(".//*[text()='"+element_visible_text+"']"))
-        self.driver.find_element_by_xpath(".//*[text()='" + element_visible_text + "']").click()
+        self.wait(self.driver.find_element_by_xpath("//*[text()='"+element_visible_text+"']"))
+        self.driver.find_element_by_xpath("//*[text()='" + element_visible_text + "']").click()
 
     def element_click_by_class(self, element_class):
         self.saveto.logger.info("Sign in button is clicked")
-        4
+        self.wait(self.driver.find_element_by_class_name(element_class))
         self.driver.find_element_by_class_name(element_class).click()
 
     def select_list_element_by_text(self, element, text):
