@@ -35,7 +35,7 @@ class BasePage():
 
     def element_click_by_class(self, element_class):
         self.saveto.logger.info("Sign in button is clicked")
-        self.wait(self.driver.find_element_by_class_name(element_class))
+        4
         self.driver.find_element_by_class_name(element_class).click()
 
     def select_list_element_by_text(self, element, text):

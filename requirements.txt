@@ -24,8 +24,6 @@ pytest>=3.0.5
 names>=0.3.0
 locustio>=0.7
 pyzmq>=16.0.2
-pyjwt>=1.5.3
-concurrencytest>=0.1.2
 enum34>=1.1.6
 pytest-xdist>=1.22.0
 selenium==3.11.0
