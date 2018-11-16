@@ -3,6 +3,7 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.expected_conditions import visibility_of
+from selenium.webdriver.support.expected_conditions import element_to_be_clickable
 
 _failed_expectations = []
 
@@ -31,8 +32,8 @@ class BasePage():
 
     def element_click_by_visible_text(self, element_visible_text):
         self.saveto.logger.info("%s is clicked" % element_visible_text)
-        self.wait(self.driver.find_element_by_xpath("//*[text()='"+element_visible_text+"']"))
-        self.driver.find_element_by_xpath("//*[text()='" + element_visible_text + "']").click()
+        self.wait_till_element_is_clickable(self.driver.find_element_by_xpath("//*[contains(text(),'"+element_visible_text+"')]"))
+        self.driver.find_element_by_xpath("//*[contains(text(),'"+element_visible_text+"')]").click()
 
     def element_click_by_link_text(self, element_link_text):
         self.saveto.logger.info("%s is clicked" % element_link_text)
@@ -60,6 +61,10 @@ class BasePage():
     def wait(self, element):
         self.driverWait = WebDriverWait(self.driver, self.default_timeout_time)
         self.driverWait.until(visibility_of(element))
+
+    def wait_till_element_is_clickable(self, element):
+        self.driverWait = WebDriverWait(self.driver, self.default_timeout_time)
+        self.driverWait.until(element_to_be_clickable(element))
 
     def check_exists(self, element_xpath):
         try:
@@ -95,6 +100,13 @@ class BasePage():
         self.driver.find_element_by_xpath(element_xpath).clear()
         self.saveto.logger.info("Entering %s value in the text field" % value)
         self.driver.find_element_by_xpath(element_xpath).send_keys(value)
+
+    def enter_value_in_text_field_by_id(self, element_id, value):
+        self.saveto.logger.info("Clearing value from the text field")
+        self.wait(self.driver.find_element_by_id(element_id))
+        self.driver.find_element_by_id(element_id).clear()
+        self.saveto.logger.info("Entering %s value in the text field" % value)
+        self.driver.find_element_by_id(element_id).send_keys(value)
 
     def count_elements_with_xpath(self, element_xpath):
         return len(self.driver.find_elements_by_xpath(element_xpath))

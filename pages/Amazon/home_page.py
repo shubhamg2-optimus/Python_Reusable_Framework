@@ -14,6 +14,7 @@ class HomePage():
 
     # Constants
 
+
     # Functions
     def navigate_to_sign_in_page(self):
         self.bp.element_click_by_xpath(self.Sign_in_dropdown_xpath)

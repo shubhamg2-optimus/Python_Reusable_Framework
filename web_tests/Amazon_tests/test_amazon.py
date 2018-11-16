@@ -5,6 +5,7 @@ class TestAccountDetails(BaseTest):
 
     def test_001_signup_with_valid_credentials(self):
         self.hp.navigate_to_sign_up_page()
+        self.sip.create_a_new_account()
 
     def test_001_login_with_valid_credentials(self):
         self.hp.navigate_to_sign_in_page()

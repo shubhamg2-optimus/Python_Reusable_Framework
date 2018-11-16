@@ -9,7 +9,6 @@ from pages.base_page import BasePage
 import time
 from utils.logger_utils import Logger
 from pages.delayed_assert import DelayedAssert
-from web_helper.credential_helper import CredentialHelper
 from pages.Amazon.home_page import HomePage
 from pages.Amazon.your_orders_page import YourOrdersPage
 from pages.Amazon.sign_in_page import SignInPage
@@ -59,7 +58,6 @@ class BaseTest(unittest.TestCase):
         # Creating objects for different pages
         cls.bp = BasePage(cls.logger, cls.driver)
         cls.da = DelayedAssert(cls.logger, cls.driver)
-        cls.ch = CredentialHelper()
 
         cls.hp = HomePage(cls.logger, cls.driver, cls.bp)
         cls.yop = YourOrdersPage(cls.logger, cls.driver, cls.bp)

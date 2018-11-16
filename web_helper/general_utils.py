@@ -34,7 +34,7 @@ class GeneralUtility(object):
         return result
 
     @staticmethod
-    def email_generator(name=None, domain="moj", tlds="io"):
+    def email_generator(name=None, domain="gmail", tlds="io"):
         """
         Generates random email address of random length
         """
