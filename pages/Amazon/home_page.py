@@ -10,7 +10,7 @@ class HomePage():
 
     # Locators
     Sign_in_dropdown_xpath = "//div[@id='nav-tools']/a[2]"
-    username_xpath = "//div[@id='nav-tools']//span"
+    username_xpath = "//span[@class='nav-line-3']"
 
     # Constants
 
