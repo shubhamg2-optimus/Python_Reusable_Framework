@@ -10,11 +10,10 @@ class SignInPage():
     password_text_field_xpath = "//input[@name='password']"
     continue_button_class = "a-button-input"
     empty_email_validation_msg_xpath = ".//*[@id='auth-email-missing-alert']/div/div"
-
+    create_acc_button_id = "createAccountSubmit"
 
     # Constants
     empty_email_validation_msg = "Enter your email or mobile phone number"
-
 
     # Functions
     def login_with_email_password(self, email, password):
