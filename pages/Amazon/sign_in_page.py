@@ -1,5 +1,6 @@
 from web_helper.credential_helper import CredentialHelper
 
+
 class SignInPage():
 
     def __init__(self, logger, webdriver, base_page):
@@ -12,7 +13,7 @@ class SignInPage():
     password_text_field_xpath = "//input[@name='password']"
     continue_button_class = "a-button-input"
     empty_email_validation_msg_xpath = ".//*[@id='auth-email-missing-alert']/div/div"
-    create_acc_button_id = "createAccountSubmit"
+    create_acc_button_xpath = "//input[@type='submit']"
     your_name_field_id = "ap_customer_name"
     email_field_id = "ap_email"
     password_field_id = "ap_password"
@@ -27,13 +28,12 @@ class SignInPage():
         self.bp.enter_value_in_text_field_by_id(self.email_field_id, CredentialHelper.valid_email)
         self.bp.enter_value_in_text_field_by_id(self.password_field_id, CredentialHelper.valid_password)
         self.bp.enter_value_in_text_field_by_id(self.re_enter_password_field_id, CredentialHelper.valid_password)
-        self.bp.element_click_by_visible_text("Create your Amazon account")
+        self.bp.element_click_by_xpath(self.create_acc_button_xpath)
 
     def login_with_email_password(self, email, password):
-        self.bp.enter_value_in_text_field_by_xpath(self.email_text_field_xpath, email)
-        self.bp.element_click_by_class(self.continue_button_class)
-        self.bp.enter_value_in_text_field_by_xpath(self.password_text_field_xpath, password)
-        self.bp.element_click_by_class(self.continue_button_class)
+        self.bp.enter_value_in_text_field_by_id(self.email_field_id, email)
+        self.bp.enter_value_in_text_field_by_id(self.password_field_id, password)
+        self.bp.element_click_by_xpath(self.create_acc_button_xpath)
 
     def login_with_empty_email_id(self, email):
         self.bp.enter_value_in_text_field_by_xpath(self.email_text_field_xpath, email)
