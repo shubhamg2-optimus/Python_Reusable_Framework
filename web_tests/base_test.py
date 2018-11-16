@@ -12,6 +12,7 @@ from pages.delayed_assert import DelayedAssert
 from pages.Amazon.home_page import HomePage
 from pages.Amazon.your_orders_page import YourOrdersPage
 from pages.Amazon.sign_in_page import SignInPage
+from web_helper.credential_helper import CredentialHelper
 from pages.Amazon.your_account_page import YourAccountPage
 from pages.Amazon.login_and_security_page import LoginAndSecurityPage
 
@@ -66,7 +67,7 @@ class BaseTest(unittest.TestCase):
         cls.sip = SignInPage(cls.logger, cls.driver, cls.bp)
         cls.yap = YourAccountPage(cls.logger, cls.driver, cls.bp)
         cls.lasp = LoginAndSecurityPage(cls.logger, cls.driver, cls.bp)
-
+        cls.ch = CredentialHelper()
     @staticmethod
     def get_page_and_load_time(cls):
         startTime = time.time()

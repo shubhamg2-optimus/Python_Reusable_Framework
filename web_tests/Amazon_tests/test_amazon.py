@@ -6,6 +6,7 @@ class TestAccountDetails(BaseTest):
     def test_001_signup_with_valid_credentials(self):
         self.hp.navigate_to_sign_up_page()
         self.sip.create_a_new_account()
+        self.assertEqual(self.ch.username, self.hp.get_username(), "Incorrect Username")
 
     def test_001_login_with_valid_credentials(self):
         self.hp.navigate_to_sign_in_page()
@@ -26,6 +27,7 @@ class TestAccountDetails(BaseTest):
         self.assertEqual(act_pwd_validation_msg, self.sip.EMPTY_PWD_VALIDATION_MSG, "Invalid Error message")
 
     def test_004_update_user_information(self):
+        self.sip.create_a_new_account()
         self.hp.navigate_to_sign_in_page()
         self.sip.login_with_email_password(self.ch.valid_email, self.ch.valid_password)
         self.hp.navigate_to_your_account_page()

@@ -17,8 +17,8 @@ class HomePage():
 
     # Functions
     def navigate_to_sign_in_page(self):
-        self.bp.element_click_by_xpath(self.Sign_in_dropdown_xpath)
-        time.sleep(5)
+        self.bp.perform_hover_by_xpath(self.Sign_in_dropdown_xpath)
+        self.bp.element_click_by_link_text("Your Orders")
 
     def navigate_to_your_orders_page(self):
         self.bp.perform_hover_by_xpath(self.Sign_in_dropdown_xpath)
