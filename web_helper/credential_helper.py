@@ -5,3 +5,6 @@ class CredentialHelper():
 
     # Password
     valid_password = "Amazon123"
+
+    # Username
+    username = "Test"
