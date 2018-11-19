@@ -68,6 +68,7 @@ class BaseTest(unittest.TestCase):
         cls.yap = YourAccountPage(cls.logger, cls.driver, cls.bp)
         cls.lasp = LoginAndSecurityPage(cls.logger, cls.driver, cls.bp)
         cls.ch = CredentialHelper()
+
     @staticmethod
     def get_page_and_load_time(cls):
         startTime = time.time()

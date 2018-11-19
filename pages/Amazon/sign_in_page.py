@@ -35,8 +35,8 @@ class SignInPage():
         self.bp.element_click_by_xpath(self.create_acc_button_xpath)
 
     def login_with_email_password(self, email, password):
-        self.bp.enter_value_in_text_field_by_id(self.email_field_id, email)
-        self.bp.enter_value_in_text_field_by_id(self.password_field_id, password)
+        self.bp.enter_value_in_text_field_by_xpath(self.email_text_field_xpath, email)
+        self.bp.enter_value_in_text_field_by_xpath(self.password_text_field_xpath, password)
         self.bp.element_click_by_xpath(self.create_acc_button_xpath)
 
     def login_with_empty_email_id(self, email):
