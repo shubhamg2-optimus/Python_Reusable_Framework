@@ -16,7 +16,5 @@ class OSConfig():
         configgetter = config_getter(config)
         self.platform = configgetter.getplatform()
         self.browser = configgetter.getbrowser()
-        self.driver_location = config[self.browser]['driver_location']
-        self.chrome_filename = config[self.browser]['chrome_filename']
 
         self.url = locator.base_url_amazon

@@ -4,7 +4,9 @@ import os
 from configuration.config import OSConfig
 from selenium import webdriver
 from configuration.browsers import BrowserSupported
-from utils.getchromedriver import getchromedriver
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
+from webdriver_manager.microsoft import EdgeDriverManager
 from pages.base_page import BasePage
 import time
 from utils.logger_utils import Logger
@@ -20,8 +22,6 @@ from pages.Amazon.login_and_security_page import LoginAndSecurityPage
 class BaseTest(unittest.TestCase):
 
     config = OSConfig()
-    driver_location = config.driver_location
-    chrome_filename = config.chrome_filename
     browser = BrowserSupported(config.browser)
     url = config.url
 
@@ -29,31 +29,28 @@ class BaseTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        download_chrome = getchromedriver(cls.logger)
-        download_chrome.download(cls.chrome_filename)
-
-        if cls.browser == BrowserSupported.CHROME_MAC:
+        if cls.browser == BrowserSupported.CHROME:
             options = webdriver.ChromeOptions()
             options.add_argument("--kiosk")
             options.add_argument("allow-running-insecure-content")
-            cls.driver = webdriver.Chrome(cls.getDriverPath(cls), chrome_options=options)
+            cls.driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
             cls.driver.implicitly_wait(20)
 
-        elif cls.browser == BrowserSupported.CHROME_WIN:
-            options = webdriver.ChromeOptions()
+        elif cls.browser == BrowserSupported.FIREFOX:
+            options = webdriver.FirefoxOptions()
             options.add_argument("--kiosk")
             options.add_argument("allow-running-insecure-content")
-            cls.driver = webdriver.Chrome(cls.getDriverPath(cls), chrome_options=options)
+            cls.driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), firefox_options=options)
             cls.driver.implicitly_wait(20)
 
-        elif cls.browser == BrowserSupported.CHROME_LINUX:
-            options = webdriver.ChromeOptions()
-            options.add_argument("--headless")
-            cls.driver = webdriver.Chrome(cls.getDriverPath(cls), chrome_options=options)
-            cls.driver.implicitly_wait(20)
+        elif cls.browser == BrowserSupported.EDGE:
+            cls.driver = webdriver.Edge(EdgeDriverManager().install())
 
         else:
             assert False, "Unknown Browser {}".format(cls.browser)
+
+        # Setting implicit wait
+        cls.driver.implicitly_wait(20)
 
         # Navigating to sign in page
         cls.get_page_and_load_time(cls)
@@ -87,7 +84,4 @@ class BaseTest(unittest.TestCase):
             if error:
                 if 'assert_expectations' not in str(error):
                     self.logger.logger.info("Taking Snapshot for the test case failure")
-                    self.driver.save_screenshot(os.path.join(os.path.dirname(__file__),'Snapshot', self._testMethodName + "_error.png"))
-
-    def getDriverPath(cls):
-        return os.path.join(os.path.dirname(__file__), '../utils', cls.driver_location)
+                    self.driver.save_screenshot(os.path.join(os.path.dirname(__file__), 'Snapshot', self._testMethodName + "_error.png"))
