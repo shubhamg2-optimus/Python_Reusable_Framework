@@ -5,7 +5,7 @@ class CredentialHelper():
 
     # EmailId
     #valid_email = GeneralUtility.email_generator()
-    valid_email = "amazon14nov2018@gmail.com"
+    valid_email = "amazon16nov2018@gmail.com"
 
     # Password
     # valid_password = "Amazon" + GeneralUtility.num_string_generator(3)

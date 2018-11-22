@@ -10,8 +10,9 @@ class HomePage():
 
     # Locators
     sign_in_dropdown_xpath = "//div[@id='nav-tools']/a[2]"
+    start_here_xpath = "//a[contains(text(),'Start here.')]"
     username_xpath = "//*[@class='nav-a nav-a-2 nav-truncate']//span[@class='nav-line-1']"
-    sign_in_button_xpath = "//a[@class='nav-action-button']"
+    sign_in_button_xpath = "//div[@id='nav-flyout-ya-signin']//span[@class='nav-action-inner'][contains(text(),'Sign in')]"
 
     # Constants
 
@@ -27,7 +28,8 @@ class HomePage():
 
     def navigate_to_sign_up_page(self):
         self.bp.perform_hover_by_xpath(self.sign_in_dropdown_xpath)
-        self.bp.element_click_by_link_text("Start here.")
+        time.sleep(2)
+        self.bp.element_click_by_xpath(self.start_here_xpath)
         time.sleep(10)
 
     def get_username(self):
