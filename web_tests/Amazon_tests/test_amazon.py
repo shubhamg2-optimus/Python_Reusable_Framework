@@ -10,25 +10,27 @@ class TestAccountDetails(BaseTest):
         self.hp.log_out_account()
 
     def test_002_login_with_valid_credentials(self):
+        self.hp.navigate_to_sign_in_page()
         self.sip.login_with_email_password(self.ch.valid_email, self.ch.valid_password)
         self.assertEqual(self.ch.username, self.hp.get_username(), "Incorrect Username")
         self.hp.log_out_account()
 
     def test_003_your_orders_section_for_a_new_account(self):
+        self.hp.navigate_to_sign_in_page()
         self.sip.login_with_email_password(self.ch.valid_email, self.ch.valid_password)
         self.hp.navigate_to_your_orders_page()
         self.bp.is_text_present(self.yop.NO_ORDER_TEXT)
         self.hp.log_out_account()
 
     def test_004_empty_username_field(self):
+        self.hp.navigate_to_sign_in_page()
         self.sip.login_with_email_password("", "")
         act_email_validation_msg = self.bp.get_text(self.sip.empty_email_validation_msg_xpath)
-        self.assertEqual(act_email_validation_msg, self.sip.EMPTY_EMAIL_VALIDATION_MSG, "Invalid Error message")
+        self.assertEqual(act_email_validation_msg, self.sip.EMPTY_EMAIL_VALIDATION_MSG, "Incorrect Error Message")
         act_pwd_validation_msg = self.bp.get_text(self.sip.empty_pwd_validation_msg_xpath)
-        self.assertEqual(act_pwd_validation_msg, self.sip.EMPTY_PWD_VALIDATION_MSG, "Invalid Error message")
+        self.assertEqual(act_pwd_validation_msg, self.sip.EMPTY_PWD_VALIDATION_MSG, "Incorrect Error Message")
 
     def test_005_update_user_information(self):
-        self.sip.create_a_new_account()
         self.hp.navigate_to_sign_in_page()
         self.sip.login_with_email_password(self.ch.valid_email, self.ch.valid_password)
         self.hp.navigate_to_your_account_page()

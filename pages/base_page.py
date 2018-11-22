@@ -96,8 +96,8 @@ class BasePage():
 
     def enter_value_in_text_field_by_xpath(self, element_xpath, value):
         self.saveto.logger.info("Clearing value from the text field")
-        self.wait(self.driver.find_element_by_xpath(element_xpath))
-        self.driver.find_element_by_xpath(element_xpath).clear()
+        #self.wait(self.driver.find_element_by_xpath(element_xpath))
+        #self.driver.find_element_by_xpath(element_xpath).clear()
         self.saveto.logger.info("Entering %s value in the text field" % value)
         self.driver.find_element_by_xpath(element_xpath).send_keys(value)
 
@@ -119,6 +119,7 @@ class BasePage():
     def get_text_by_CSS(self, element_css):
         self.saveto.logger.info("Getting text value")
         self.wait(self.driver.find_element_by_css_selector(element_css))
+        self.saevto.logger.info("value is "+ self.driver.find_element_by_css_selector(element_css).text)
         return self.driver.find_element_by_css_selector(element_css).text
 
     def get_attribute(self, element_xpath, attribute):
