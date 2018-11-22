@@ -6,7 +6,6 @@ from selenium import webdriver
 from configuration.browsers import BrowserSupported
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
-from webdriver_manager.microsoft import EdgeDriverManager
 from pages.base_page import BasePage
 import time
 from utils.logger_utils import Logger
@@ -42,9 +41,6 @@ class BaseTest(unittest.TestCase):
             options.add_argument("allow-running-insecure-content")
             cls.driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), firefox_options=options)
             cls.driver.implicitly_wait(20)
-
-        elif cls.browser == BrowserSupported.EDGE:
-            cls.driver = webdriver.Edge(EdgeDriverManager().install())
 
         else:
             assert False, "Unknown Browser {}".format(cls.browser)
