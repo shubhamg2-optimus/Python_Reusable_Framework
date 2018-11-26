@@ -12,7 +12,8 @@ class SignInPage():
     email_text_field_xpath = "//input[@name='email']"
     password_text_field_xpath = "//input[@name='password']"
     continue_button_class = "a-button-input"
-    empty_email_validation_msg_xpath = ".//*[@id='auth-email-missing-alert']/div/div"
+    empty_email_validation_msg_xpath = "//*[@id='auth-email-missing-alert']/div/div"
+    empty_pwd_validation_msg_xpath = "//*[@id='auth-password-missing-alert']/div/div"
     create_acc_button_xpath = "//input[@type='submit']"
     create_acc_button_id = "createAccountSubmit"
     your_name_field_id = "ap_customer_name"
@@ -28,10 +29,10 @@ class SignInPage():
 
     # Functions
     def create_a_new_account(self):
-        self.bp.enter_value_in_text_field_by_id(self.your_name_field_id, CredentialHelper.username)
-        self.bp.enter_value_in_text_field_by_id(self.email_field_id, CredentialHelper.valid_email)
-        self.bp.enter_value_in_text_field_by_id(self.password_field_id, CredentialHelper.valid_password)
-        self.bp.enter_value_in_text_field_by_id(self.re_enter_password_field_id, CredentialHelper.valid_password)
+        self.bp.enter_value_in_text_field_by_id(self.your_name_field_id, CredentialHelper.random_username)
+        self.bp.enter_value_in_text_field_by_id(self.email_field_id, CredentialHelper.random_email)
+        self.bp.enter_value_in_text_field_by_id(self.password_field_id, CredentialHelper.random_password)
+        self.bp.enter_value_in_text_field_by_id(self.re_enter_password_field_id, CredentialHelper.random_password)
         self.bp.element_click_by_xpath(self.create_acc_button_xpath)
 
     def login_with_email_password(self, email, password):

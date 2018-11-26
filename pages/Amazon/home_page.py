@@ -13,9 +13,6 @@ class HomePage():
     username_xpath = "//*[@class='nav-a nav-a-2 nav-truncate']//span[@class='nav-line-1']"
     sign_in_button_xpath = "//a[@class='nav-action-button']"
 
-    # Constants
-
-
     # Functions
     def navigate_to_sign_in_page(self):
         self.bp.perform_hover_by_xpath(self.sign_in_dropdown_xpath)
