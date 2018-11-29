@@ -1,7 +1,7 @@
 # Python_Reusable_Framework
 
 
-## This project have reusable frameworks for Web, Mobile, API and Database Testing
+## This project have reusable frameworks for Web, Mobile and API Testing
 
 ### Prerequisites
 
@@ -15,7 +15,7 @@ We would need following to setup in Windows machine
 * Python version information should be displayed
 
 2. Browsers
-* Latest versions of Chrome must be installed (used Desktop chrome version: 70.0.3538.102)
+* Latest versions of Chrome and Firefox must be installed (used Desktop chrome version: 70.0.3538.102)
 
 3. Appium
 
@@ -32,16 +32,19 @@ Following are the steps to run tests in Retail Test Automation Framework
 
 1. Test script execution in pycharm through pytest
 
+* Set the Python Interpreter:
+** Go to File -> Settings -> project -> Project Iterpreter -> Select the Project Interpreter
+
 * Set the path of the tests folder:
 ** Go to File -> Settings -> project -> Project Structure -> Select the Source folder -> Apply -> Ok
 
 * Set Default Test Runner as py.test file:
 ** Go to File -> Settings -> Tool -> Python Integrated Tools -> Default test runner
 
-2. Test script execution through Terminal
+2. Test script execution through Terminal/ Command prompt
 
 
 
 3. To run the tests
-* Select the file.
-* Click on the Run icon.
+* Select the file or the test
+* Click on the Run icon
