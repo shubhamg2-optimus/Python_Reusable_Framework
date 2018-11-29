@@ -1,0 +1,15 @@
+class Constants():
+
+    SUCCESS_RESPONSE_CODE = "200"
+    SUCCESS_NO_DATA_RESPONSE_CODE = "204"
+    NOT_FOUND_RESPONSE_CODE = "404"
+    BAD_REQUEST_RESPONSE_CODE = "400"
+    SERVER_ERROR_RESPONSE_CODE = "500"
+    AUTHORISATION_ERROR_RESPONSE_CODE = "401"
+    AUTHENTICATION_ERROR_RESPONSE_CODE = "403"
+
+    EXISTING_USER_ID = "2"
+    NON_EXISTING_USER_ID = "100"
+
+    NEW_USER_PAYLOAD = {"name": "Shubham", "job": "Enforecement Officer"}
+    INVALID_USER_PAYLOAD = {"test": "Shubham", "job": "Enforecement Officer"}
