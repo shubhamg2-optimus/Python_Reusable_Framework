@@ -96,8 +96,8 @@ class BasePage():
 
     def enter_value_in_text_field_by_xpath(self, element_xpath, value):
         self.saveto.logger.info("Clearing value from the text field")
-        #self.wait(self.driver.find_element_by_xpath(element_xpath))
-        #self.driver.find_element_by_xpath(element_xpath).clear()
+        self.wait(self.driver.find_element_by_xpath(element_xpath))
+        self.driver.find_element_by_xpath(element_xpath).clear()
         self.saveto.logger.info("Entering %s value in the text field" % value)
         self.driver.find_element_by_xpath(element_xpath).send_keys(value)
 
