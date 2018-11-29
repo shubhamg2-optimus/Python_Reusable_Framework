@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-from Locators.locator import locator
+from Locators.locator import Locator
 from configuration.config_getter import config_getter
 import os
 import configparser
@@ -17,4 +17,4 @@ class OSConfig():
         self.platform = configgetter.getplatform()
         self.browser = configgetter.getbrowser()
 
-        self.url = locator.base_url_amazon
+        self.url = Locator.base_url_amazon
