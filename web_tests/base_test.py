@@ -20,12 +20,14 @@ from pages.Amazon.login_and_security_page import LoginAndSecurityPage
 
 class BaseTest(unittest.TestCase):
 
+    # Creating an object of configuration -> config.py, Logger and Supported Browser classes.
     config = OSConfig()
-    browser = BrowserSupported(config.browser)
     url = config.url
+    browser = BrowserSupported(config.browser)
 
     logger = Logger(__name__ + ".log")
 
+    # This code will run before every Test suite
     @classmethod
     def setUpClass(cls):
         if cls.browser == BrowserSupported.CHROME:
@@ -69,11 +71,13 @@ class BaseTest(unittest.TestCase):
         endTime = time.time()
         cls.logger.logger.info("Page load time taken in: %s ms" % (endTime-startTime))
 
+    # Code to quit browser after all the test cases present in the Suite have run
     @classmethod
     def tearDownClass(cls):
         if (cls.driver!=None):
             cls.driver.quit()
 
+    # Taking screen shots and failing the softasserts if there are soft asserts preset in the test case
     def tearDown(self):
         self.da.assert_expectations()
         for method, error in self._outcome.errors:
