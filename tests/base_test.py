@@ -34,11 +34,11 @@ class BaseTest(unittest.TestCase):
             desired_caps['deviceName'] = self.mc.android_deviceName
             desired_caps['appPackage'] = self.mc.android_appPackage
             desired_caps['appActivity'] = self.mc.android_appActivity
-            desired_caps['app'] = PATH('../../../Desktop/andriod_app/' + self.mc.android_app)
+            desired_caps['app'] = PATH(self.mc.android_app)
             desired_caps['noReset'] = self.mc.android_noReset
         else:
             assert False, "Unknown platform {}".format(self.platform)
-        self.driver = webdriver.Remote(command_executor='http://0.0.0.0:4723/wd/hub', desired_capabilities=desired_caps)
+        self.driver = webdriver.Remote(command_executor='http://127.0.0.1:4723/wd/hub', desired_capabilities=desired_caps)
         self.driver.implicitly_wait(self.mc.timeout)
         try:
             time.sleep(15)

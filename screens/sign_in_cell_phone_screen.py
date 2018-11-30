@@ -2,8 +2,6 @@ from screens.modes import PlatformSupported
 from screens.elements.holder import Holder
 from screens.screen_base import ScreenBase
 from locators.locators import AndroidSignInPhoneNumber, AndroidSignInPhoneNumber
-from locators.ios import IOSSignIn
-from locators.ios import IOSSignIn
 import enum
 
 class SignInCellPhoneScreen(ScreenBase):

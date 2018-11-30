@@ -1,11 +1,9 @@
 import enum
 
 from locators.locators import AndroidFirstScreen
-from locators.ios import IOSFirstScreen
 from screens.modes import PlatformSupported
 from screens.elements.holder import Holder
 from screens.screen_base import ScreenBase
-import time
 
 class FirstScreen(ScreenBase):
     @enum.unique
