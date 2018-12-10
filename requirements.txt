@@ -11,3 +11,4 @@ pytest>=3.0.5
 selenium==3.11.0
 # To manage installation and upgradation of webdriver
 webdriver_manager>=1.7
+Appium-Python-Client
