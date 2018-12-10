@@ -1,6 +1,4 @@
-import unittest
-
-from tests.base_test import BaseTest
+from mobile_tests.base_test import BaseTest
 
 
 class SignInTest(BaseTest):

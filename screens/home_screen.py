@@ -11,13 +11,10 @@ class HomeScreen():
         self.bs = basescreen
 
     #Locators
+    app_logo_class = "android.widget.ImageView"
     app_logo_id = "android:id/home"
     overflow_icon_class = "android.widget.ImageButton"
-    first_name_text_field_id = "com.vector.guru99:id/first_name"
-    last_name_text_field_id = "com.vector.guru99:id/last_name"
-    email_address_text_field_id = "com.vector.guru99:id/email_address"
-    comments_text_field_id = "com.vector.guru99:id/comment"
-    send_button_id = "com.vector.guru99:id/send"
+    contact_us_class = "android.widget.LinearLayout"
 
 
     def verify_logo(self):
@@ -25,6 +22,6 @@ class HomeScreen():
 
     def navigate_to_contact_us(self):
         self.bs.element_click_by_class(self.overflow_icon_class)
-        self.bs.element_click_by_visible_text("Contact Us")
-        
+        self.bs.element_click_by_class(self.contact_us_class)
+
 

@@ -1,4 +1,4 @@
-from utils.constant import Data
+from mobile_utils.constant import Data
 
 class ContactUsScreen():
 

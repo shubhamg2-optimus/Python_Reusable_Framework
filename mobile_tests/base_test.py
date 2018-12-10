@@ -1,12 +1,12 @@
 from appium import webdriver
 import unittest, os
 
-from utils.logger import Logger
-from configuration.config import MobileConfig
+from mobile_utils.logger import Logger
+from mobile_configuration.config import MobileConfig
 from screens.home_screen import HomeScreen
 from screens.base_screen import BaseScreen
 from screens.contact_us_screen import ContactUsScreen
-from utils.delayed_assert import DelayedAssert
+from mobile_utils.delayed_assert import DelayedAssert
 
 # Returns abs path relative to this file and not cwd
 PATH = lambda p: os.path.abspath(os.path.join(os.path.dirname(__file__), p))
